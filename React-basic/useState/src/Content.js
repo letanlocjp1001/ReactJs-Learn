@@ -23,6 +23,7 @@ import React, { useEffect, useState } from 'react'
 // -----
 // 1.Callback luon dc goi sau khi component mouted
 // 2.Cleanup function luon dc goi trc khi component unmounted
+// 3.Cleanup function luon dc goi trc khi callback dc goi (tru lan mounted )
 
 const tabs = ['posts', 'photos', 'albums']
 
@@ -31,6 +32,7 @@ function Content() {
   const [posts, setPosts] = useState([])
   const [type, setType] = useState('posts')
   const [showGoToTop, setShowGoToTop] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
     console.log('Title change')
@@ -50,36 +52,55 @@ function Content() {
       }
     }
     window.addEventListener('scroll', handleScroll)
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
   return (
     <div>
-      {tabs.map((tab, index) => (
-        <button
-          style={
-            type === tab
-              ? {
-                  color: '#FFF',
-                  backgroundColor: '#333',
-                }
-              : {}
-          }
-          key={index}
-          onClick={() => setType(tab)}
-        >
-          {tab}
-        </button>
-      ))}
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <ul>
-        {posts.map((e) => {
-          return <li key={e.id}>{e.title}</li>
-        })}
-      </ul>
-      {showGoToTop && (
-        <button style={{ position: 'fixed', right: 20, bottom: 20 }}>
-          Go to Top
-        </button>
-      )}
+      <h1>{width}</h1>
+      <div>
+        {tabs.map((tab, index) => (
+          <button
+            style={
+              type === tab
+                ? {
+                    color: '#FFF',
+                    backgroundColor: '#333',
+                  }
+                : {}
+            }
+            key={index}
+            onClick={() => setType(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+        <input value={title} onChange={(e) => setTitle(e.target.value)} />
+        <ul>
+          {posts.map((e) => {
+            return <li key={e.id}>{e.title}</li>
+          })}
+        </ul>
+        {showGoToTop && (
+          <button style={{ position: 'fixed', right: 20, bottom: 20 }}>
+            Go to Top
+          </button>
+        )}
+      </div>
     </div>
   )
 }
