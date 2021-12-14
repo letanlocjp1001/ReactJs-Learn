@@ -22,6 +22,7 @@ import React, { useEffect, useState } from 'react'
 // - Callback se dc goi lai moi khi deps thay doi
 // -----
 // 1.Callback luon dc goi sau khi component mouted
+// 2.Cleanup function luon dc goi trc khi component unmounted
 
 const tabs = ['posts', 'photos', 'albums']
 
@@ -29,6 +30,7 @@ function Content() {
   const [title, setTitle] = useState('')
   const [posts, setPosts] = useState([])
   const [type, setType] = useState('posts')
+  const [showGoToTop, setShowGoToTop] = useState(false)
 
   useEffect(() => {
     console.log('Title change')
@@ -39,6 +41,16 @@ function Content() {
       })
   }, [type])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 200) {
+        setShowGoToTop(true)
+      } else {
+        setShowGoToTop(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+  }, [])
   return (
     <div>
       {tabs.map((tab, index) => (
@@ -63,6 +75,11 @@ function Content() {
           return <li key={e.id}>{e.title}</li>
         })}
       </ul>
+      {showGoToTop && (
+        <button style={{ position: 'fixed', right: 20, bottom: 20 }}>
+          Go to Top
+        </button>
+      )}
     </div>
   )
 }
