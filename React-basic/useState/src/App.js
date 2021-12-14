@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import Test from './Test.js'
 import Test2 from './Test2.js'
+import TodoList from './TodoList.js'
 
 // const orders = [100, 200, 300]
 
@@ -36,7 +37,8 @@ function App() {
       {/* <h1>{JSON.stringify(info)}</h1>
       <button onClick={handleUpdate}>Increase</button> */}
       {/* <Test /> */}
-      <Test2 />
+      {/* <Test2 /> */}
+      <TodoList />
     </div>
   )
 }
