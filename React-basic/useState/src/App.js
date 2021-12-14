@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './App.css'
+import './App.scss'
 // import Test from './Test.js'
 // import Test2 from './Test2.js'
 // import TodoList from './TodoList.js'
@@ -16,7 +16,9 @@ function App() {
       {/* <Test /> */}
       {/* <Test2 /> */}
       {/* <TodoList /> */}
-      <button onClick={() => setShow(!show)}>Toggle</button>
+      <button className='btn' onClick={() => setShow(!show)}>
+        <p>Toggle</p>
+      </button>
       {/* {show && <Content />} */}
       {/* {show && <Countdown />} */}
       {/* {show && <Avatar />} */}
