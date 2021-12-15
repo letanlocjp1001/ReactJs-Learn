@@ -16,16 +16,13 @@ import React, { useState, useEffect, useLayoutEffect } from 'react'
 const UseLayoutEffect = () => {
   const [count, setCount] = useState(0)
 
-  // useLayoutEffect(() => {
-  //   if (count > 3) {
-  //     setCount(0)
-  //   }
-  // }, [count])
+  useLayoutEffect(() => {
+    if (count > 3) {
+      setCount(0)
+    }
+  }, [count])
 
   const handleClick = () => {
-    if (count >= 3) {
-      return setCount(0)
-    }
     return setCount(count + 1)
   }
   return (

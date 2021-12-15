@@ -7,12 +7,13 @@ import './App.scss'
 // import Countdown from './Countdown.js'
 // import Avatar from './Avatar.js'
 // import ChatApp from './ChatApp.js'
+import UseRef from './UseRef.js'
 import UseLayoutEffect from './UseLayoutEffect.js'
 
 function App() {
   const [show, setShow] = useState(false)
   return (
-    <div className='App' style={{ padding: 20 }}>
+    <div className='App'>
       {/* <Test /> */}
       {/* <Test2 /> */}
       {/* <TodoList /> */}
@@ -23,7 +24,8 @@ function App() {
       {/* {show && <Countdown />} */}
       {/* {show && <Avatar />} */}
       {/* {show && <ChatApp />} */}
-      {show && <UseLayoutEffect />}
+      {/* {show && <UseLayoutEffect />} */}
+      <UseRef />
     </div>
   )
 }

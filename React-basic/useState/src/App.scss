@@ -1,11 +1,9 @@
 .App {
-  text-align: center;
-  font-size: 1.9rem;
+  font-size: 1.6rem;
+  padding-left: 100px;
 }
 .btn {
-  padding: 1rem, 2rem;
-  font-size: 3rem;
-  & p {
+  p {
     color: red;
   }
 }
