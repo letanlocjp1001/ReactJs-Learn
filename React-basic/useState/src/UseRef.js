@@ -5,6 +5,8 @@ const UseRef = () => {
   const [count, setCount] = useState(60)
   const timerId = useRef()
   const prevCount = useRef()
+  // Cac gia tri trong useRef luon luon la Object
+  // De lay gia tri thi timerId.current
 
   useEffect(() => {
     prevCount.current = count

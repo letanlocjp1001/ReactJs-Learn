@@ -8,7 +8,9 @@ import './App.scss'
 // import Avatar from './Avatar.js'
 // import ChatApp from './ChatApp.js'
 // import Memo from './Memo.js'
-import UseMemo from './UseMemo.js'
+// import UseMemo from './UseMemo.js'
+// import UseReducer from './UseReducer.js'
+import TodoListReducer from './TodoListReducer.js'
 
 // import UseRef from './UseRef.js'
 // import UseLayoutEffect from './UseLayoutEffect.js'
@@ -30,7 +32,9 @@ function App() {
       {/* {show && <UseLayoutEffect />} */}
       {/* <UseRef /> */}
       {/* <Memo /> */}
-      <UseMemo />
+      {/* <UseMemo /> */}
+      {/* <UseReducer /> */}
+      <TodoListReducer />
     </div>
   )
 }
